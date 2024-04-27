@@ -2,7 +2,6 @@ package com.chavan.blog.services;
 
 import java.util.List;
 
-import com.chavan.blog.entities.Category;
 import com.chavan.blog.payload.CategoryDto;
 
 public interface CategoryService {
