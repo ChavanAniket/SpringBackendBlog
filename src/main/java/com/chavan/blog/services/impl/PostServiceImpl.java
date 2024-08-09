@@ -16,6 +16,7 @@ import com.chavan.blog.entities.Post;
 import com.chavan.blog.entities.User;
 import com.chavan.blog.exceptions.ResourceNotFoundException;
 import com.chavan.blog.payload.PostDto;
+import com.chavan.blog.payload.PostResponse;
 import com.chavan.blog.payload.UserDto;
 import com.chavan.blog.repositories.CategoryRepo;
 import com.chavan.blog.repositories.PostRepo;
@@ -81,7 +82,14 @@ public class PostServiceImpl implements PostService {
 		List<PostDto> postDtos = allPosts.stream().map(post->this.modelMapper.map(post,PostDto.class)).collect(Collectors.toList());
 		PostResponse postResponse = new PostResponse();
 		
-		return postDtos;
+		postResponse.setContent(postDtos);
+		postResponse.setPageNumber(pagePost.getNumber());
+		postResponse.setPageSize(pagePost.getSize());
+		postResponse.setTotalElements(pagePost.getTotalElements());
+		postResponse.setTotalPages(pagePost.getTotalPages());
+		postResponse.setLastPage(pagePost.isLast());
+		
+		return postResponse;
 	}
 
 	@Override
