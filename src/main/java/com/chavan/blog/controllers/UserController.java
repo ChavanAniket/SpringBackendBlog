@@ -57,7 +57,7 @@ public class UserController {
 	}
 	//GET - user get
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ADMIN_USER')")
 	@GetMapping("/")
 	public ResponseEntity<List<UserDto>> getAllUsser()
 	{
